@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python tools
+.pytest_cache/
+.mypy_cache/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+
+# Generated output
+output.txt
+
+# Large/raw trading data
+data/raw/
+
+# Generated charts
+data/processed/charts/
+
+# Generated trade/equity files
+data/trades/
+
+# ZIP/archive files
+*.zip
