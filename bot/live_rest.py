@@ -1,7 +1,11 @@
 import time
 import requests
+import os
 
 from datetime import datetime, timezone
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from m30_builder import M30Builder
 from m30_liquidity import M30Liquidity
@@ -18,7 +22,7 @@ from risk_manager import RiskManager
 # CONFIG
 # ============================================================
 
-SYMBOL = "XAUUSDT"
+SYMBOL = os.getenv("SYMBOL", "XAUUSDT")
 
 INTERVAL = "1m"
 
@@ -30,18 +34,18 @@ RISK_REWARD = 2.0
 
 STOP_BUFFER = 0.50
 
-PAPER_TRADING = True
+PAPER_TRADING = os.getenv("PAPER_TRADING", "True").lower() == "true"
 
-REAL_ORDERS = False
+REAL_ORDERS = os.getenv("REAL_ORDERS", "False").lower() == "true"
 
-STARTING_BALANCE = 10000.0
+STARTING_BALANCE = float(os.getenv("STARTING_BALANCE", "10000"))
 
 
 # ============================================================
 # V1 RISK RULES
 # ============================================================
 
-RISK_PERCENT = 0.5
+RISK_PERCENT = float(os.getenv("RISK_PERCENT", "0.5"))
 
 MAX_LOTS = 0.5
 

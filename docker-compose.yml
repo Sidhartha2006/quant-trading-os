@@ -1,0 +1,9 @@
+services:
+  quant-bot:
+    build: .
+    container_name: quant-trading-os
+
+    env_file:
+      - .env
+
+    restart: unless-stopped
