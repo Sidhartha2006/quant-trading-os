@@ -31,3 +31,20 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t quant-trading-os .
+  deploy:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd ~/quant-trading-os
+            git pull origin main
+            docker compose down
+            docker compose up -d --build
