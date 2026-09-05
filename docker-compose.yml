@@ -7,3 +7,5 @@ services:
       - .env
 
     restart: unless-stopped
+    volumes:
+      - ./data/trades:/app/data/trades
